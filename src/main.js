@@ -5,12 +5,14 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-//import req from '@/lib/req.js'
+import validate from './utils/validate.js'
+import common from './utils/common.js'
+axios.defaults.timeout = 30000;
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
-//Vue.prototype.req = req
 Vue.use(VueAxios, axios)
-/* eslint-disable no-new */
+Vue.use(validate)
+Vue.use(common)
 new Vue({
   el: '#app',
   router,
