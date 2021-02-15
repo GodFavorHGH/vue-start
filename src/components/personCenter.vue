@@ -1,7 +1,8 @@
 <!--suppress ALL -->
 <template>
   <div class="hello">
-<!--    <img src="./assets/logo.png">-->
+    <h1>modify</h1>
+    <router-view />
     <form id="form">
       <ul>
         <li>
@@ -13,31 +14,32 @@
           <input v-model="formData.password" type="password">
         </li><br>
         <li>
-          <input type="button" value="登陆" @click="login">
-          <input type="button" value="注册" @click="register">
+          <input type="button" value="提交" @click="submit">
         </li>
       </ul>
     </form>
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'personalCenter',
   data () {
     return {
       formData:{
         //phone:'',
         //password:''
-        phone:'18888888888',
-        password:'admin'
-      }
+        id:19,
+        phone:'',
+        password:'',
+        name:'sss'
+      },
     }
   },
   methods :{
-    login(){
-      this.axios.post('http://localhost:9080/user/login', this.formData).then(res=>{
+    submit(){
+      const dataSuffix = 'id='+this.formData.id+'&'+'password='+this.formData.password+'&'+'name='+this.formData.name;
+      this.axios.post('http://localhost:9080/user/update2?'+dataSuffix).then(res=>{
           if (res.data&&res.data.code===200){
             console.log(res.data.data)
             this.$router.push({name:'home',params:res.data.data})
@@ -45,8 +47,6 @@ export default {
             alert(res.data.message)
           }
         }).catch(function (error) {
-          console.log(error);
-          alert(error);
         });
     },
     register(){

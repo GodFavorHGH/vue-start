@@ -1,11 +1,9 @@
 <template>
   <div class="hello">
     <router-view></router-view>
-    <h1>{{ userInfo.name }}</h1>
-    <h2>登陆成功</h2>
     <form id="form">
       <ul>
-      </ul>
+      </ul>webpack.base.conf.js
     </form>
   </div>
 </template>
@@ -16,10 +14,13 @@ export default {
   data () {
     return {
       userInfo: this.$route.params,
+      menus: this.$route.params.menus,
     }
   },
   methods :{
-
+    routerGo(menuId){
+      this.$router.push({name:'/'+menuId,params:this.$route.params})
+    }
   }
 }
 </script>

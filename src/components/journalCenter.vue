@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <template>
   <div class="hello">
-<!--    <img src="./assets/logo.png">-->
+    <router-view></router-view>
     <form id="form">
       <ul>
         <li>
@@ -18,7 +18,6 @@
         </li>
       </ul>
     </form>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -45,8 +44,6 @@ export default {
             alert(res.data.message)
           }
         }).catch(function (error) {
-          console.log(error);
-          alert(error);
         });
     },
     register(){
